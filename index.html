@@ -5,13 +5,14 @@
 
   // Configuração do Firebase
   const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "SEU_PROJETO.firebaseapp.com",
-      databaseURL: "https://SEU_PROJETO-default-rtdb.europe-west1.firebasedatabase.app",
-      projectId: "SEU_PROJETO",
-      storageBucket: "SEU_PROJETO.appspot.com",
-      messagingSenderId: "SEU_ID",
-      appId: "SUA_APP_ID"
+      apiKey: "AIzaSyDeMULdSF8hfTaB8XNkcuaaR8Nev2JSP2g",
+      authDomain: "cbdm-dcad9.firebaseapp.com",
+      databaseURL: "https://cbdm-dcad9-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "cbdm-dcad9",
+      storageBucket: "cbdm-dcad9.appspot.com",
+      messagingSenderId: "644580583767",
+      appId: "1:644580583767:web:2c433d99e54e791d487612",
+      measurementId: "G-9FL4NZ2FEE"
   };
 
   // Inicializar Firebase
@@ -28,6 +29,17 @@
           return;
       }
       document.getElementById("quiz").style.display = "block";
+      loadQuestion();
+  }
+
+  function loadQuestion() {
+      document.getElementById("quiz").innerHTML = `
+          <h3>1. O que significa a palavra \"multimédia\"?</h3>
+          <button class="option" onclick="checkAnswer(this, false)">a) Uso exclusivo de texto para transmitir mensagens</button>
+          <button class="option" onclick="checkAnswer(this, false)">b) Transmissão de informação apenas por rádio e televisão</button>
+          <button class="option" onclick="checkAnswer(this, true)">c) Utilização de múltiplos meios para transmitir uma mensagem</button>
+          <button class="option" onclick="checkAnswer(this, false)">d) Um formato de comunicação baseado apenas em áudio</button>
+      `;
   }
 
   window.checkAnswer = function(button, isCorrect) {
@@ -51,4 +63,3 @@
       });
   }
 </script>
-
