@@ -38,4 +38,17 @@
           button.classList.add("correct");
           saveResult(true);
       } else {
-          button.classList.add("
+          button.classList.add("wrong");
+          saveResult(false);
+      }
+
+      document.querySelectorAll('.option').forEach(btn => btn.disabled = true);
+  }
+
+  function saveResult(isCorrect) {
+      set(ref(db, "respostas/" + groupName), {
+          acertou: isCorrect
+      });
+  }
+</script>
+
