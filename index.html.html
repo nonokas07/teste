@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz sobre Multimédia</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        .opcao { 
+            display: block; 
+            margin: 10px; 
+            padding: 10px; 
+            cursor: pointer; 
+            border: 1px solid #000; 
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .correto { background-color: lightgreen; }
+        .errado { background-color: lightcoral; }
+        .desativado { pointer-events: none; opacity: 0.5; }
+    </style>
+</head>
+<body>
+
+    <h2>Qual a melhor definição para multimédia?</h2>
+
+    <div id="opcoes">
+        <div class="opcao" onclick="verificarResposta(this, false)">Utilização de meios semelhantes para a divulgação de uma mensagem.</div>
+        <div class="opcao" onclick="verificarResposta(this, false)">Divulgação de uma mensagem em conversas informais.</div>
+        <div class="opcao" onclick="verificarResposta(this, true)">Utilização de meios diversificados para a divulgação de uma mensagem.</div>
+        <div class="opcao" onclick="verificarResposta(this, false)">Divulgação de uma mensagem utilizando apenas texto.</div>
+    </div>
+
+    <!-- Área onde o QR Code será exibido -->
+    <h3>Escaneie o QR Code abaixo:</h3>
+    <div id="qrcode"></div>  <!-- Aqui vai aparecer o QR Code -->
+
+    <script>
+        let respondido = false;
+
+        function verificarResposta(elemento, correta) {
+            if (respondido) return;
+            respondido = true;
+
+            document.querySelectorAll('.opcao').forEach(el => {
+                el.classList.add('desativado');  // Desativa todas as opções após resposta
+            });
+
+            if (correta) {
+                elemento.classList.add('correto');
+            } else {
+                elemento.classList.add('errado');
+            }
+        }
+
+        // Coloque aqui a URL gerada pelo Netlify (exemplo abaixo)
+        var linkQRCode = "https://meu-quiz.netlify.app";  // **Link gerado automaticamente pelo Netlify**
+        new QRCode(document.getElementById("qrcode"), linkQRCode);
+    </script>
+
+</body>
+</html>
